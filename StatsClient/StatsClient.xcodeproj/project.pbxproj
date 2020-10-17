@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E43FAF8C253B491200C9C0B6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E43FAF8B253B491200C9C0B6 /* main.cpp */; };
+		E43FAF95253B4C4B00C9C0B6 /* UserException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E43FAF93253B4C4B00C9C0B6 /* UserException.cpp */; };
+		E43FAF9C253B571700C9C0B6 /* LoginCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E43FAF9A253B571700C9C0B6 /* LoginCommand.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +28,11 @@
 		E43FAF88253B491100C9C0B6 /* StatsClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = StatsClient; sourceTree = BUILT_PRODUCTS_DIR; };
 		E43FAF8B253B491200C9C0B6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E43FAF92253B4A9800C9C0B6 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		E43FAF93253B4C4B00C9C0B6 /* UserException.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UserException.cpp; sourceTree = "<group>"; };
+		E43FAF94253B4C4B00C9C0B6 /* UserException.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UserException.hpp; sourceTree = "<group>"; };
+		E43FAF98253B501200C9C0B6 /* Command.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Command.hpp; sourceTree = "<group>"; };
+		E43FAF9A253B571700C9C0B6 /* LoginCommand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LoginCommand.cpp; sourceTree = "<group>"; };
+		E43FAF9B253B571700C9C0B6 /* LoginCommand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LoginCommand.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +66,22 @@
 		E43FAF8A253B491100C9C0B6 /* StatsClient */ = {
 			isa = PBXGroup;
 			children = (
+				E43FAF96253B4FF800C9C0B6 /* Commands */,
 				E43FAF8B253B491200C9C0B6 /* main.cpp */,
+				E43FAF93253B4C4B00C9C0B6 /* UserException.cpp */,
+				E43FAF94253B4C4B00C9C0B6 /* UserException.hpp */,
 			);
 			path = StatsClient;
+			sourceTree = "<group>";
+		};
+		E43FAF96253B4FF800C9C0B6 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				E43FAF98253B501200C9C0B6 /* Command.hpp */,
+				E43FAF9A253B571700C9C0B6 /* LoginCommand.cpp */,
+				E43FAF9B253B571700C9C0B6 /* LoginCommand.hpp */,
+			);
+			path = Commands;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,7 +141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E43FAF95253B4C4B00C9C0B6 /* UserException.cpp in Sources */,
 				E43FAF8C253B491200C9C0B6 /* main.cpp in Sources */,
+				E43FAF9C253B571700C9C0B6 /* LoginCommand.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
