@@ -13,11 +13,17 @@
 
 #include "Commands/Command.hpp"
 #include "Commands/LoginCommand.hpp"
+#include "Commands/RecordCommand.hpp"
+#include "Commands/QueryCommand.hpp"
 #include "UserException.hpp"
 
 const LoginCommand LOGIN_COMMAND;
+const RecordCommand RECORD_COMMAND;
+const QueryCommand QUERY_COMMAND;
 const std::vector<const Command*> ALL_COMMANDS {
-    &LOGIN_COMMAND
+    &LOGIN_COMMAND,
+    &RECORD_COMMAND,
+    &QUERY_COMMAND
 };
 
 const Command* getCommand(std::string name) {

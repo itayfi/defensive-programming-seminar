@@ -1,4 +1,5 @@
 from contextlib import contextmanager
+import datetime as dt
 
 import bcrypt
 import sqlalchemy
@@ -29,13 +30,13 @@ class Statistic(Base):
     id = Column(Integer, primary_key=True)
     tag = Column(String)
     value = Column(Numeric, nullable=False)
-    timestamp = Column(DateTime, nullable=False)
+    timestamp = Column(DateTime, nullable=False, default=dt.datetime.utcnow)
 
     def __repr__(self):
-        return f"<Statistic #{self.id} {self.tag}@{self.timetamp.isoformat()}={self.value}>"
+        return f"<Statistic #{self.id} {self.tag}@{self.timestamp.isoformat()}={self.value}>"
 
 
-engine = sqlalchemy.create_engine("sqlite:///stats.db", echo=True)
+engine = sqlalchemy.create_engine("sqlite:///stats.db")
 Session = sessionmaker(bind=engine)
 
 

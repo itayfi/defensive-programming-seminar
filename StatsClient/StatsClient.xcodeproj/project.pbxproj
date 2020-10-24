@@ -13,6 +13,8 @@
 		E442D0912543330F00F80790 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E48E72282543302500D604EE /* libcurl.tbd */; };
 		E442D098254428CF00F80790 /* libcurlpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E442D097254428CF00F80790 /* libcurlpp.dylib */; };
 		E442D09B25442E5500F80790 /* SettingsStore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E442D09925442E5500F80790 /* SettingsStore.cpp */; };
+		E442D09E2544550B00F80790 /* RecordCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E442D09C2544550B00F80790 /* RecordCommand.cpp */; };
+		E442D0A125445C4500F80790 /* QueryCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E442D09F25445C4500F80790 /* QueryCommand.cpp */; };
 		E494BACA254322C300175E38 /* HTTPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E494BAC8254322C300175E38 /* HTTPClient.cpp */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,10 @@
 		E442D097254428CF00F80790 /* libcurlpp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurlpp.dylib; path = Frameworks/libcurlpp.dylib; sourceTree = "<group>"; };
 		E442D09925442E5500F80790 /* SettingsStore.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SettingsStore.cpp; sourceTree = "<group>"; };
 		E442D09A25442E5500F80790 /* SettingsStore.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SettingsStore.hpp; sourceTree = "<group>"; };
+		E442D09C2544550B00F80790 /* RecordCommand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RecordCommand.cpp; sourceTree = "<group>"; };
+		E442D09D2544550B00F80790 /* RecordCommand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RecordCommand.hpp; sourceTree = "<group>"; };
+		E442D09F25445C4500F80790 /* QueryCommand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QueryCommand.cpp; sourceTree = "<group>"; };
+		E442D0A025445C4500F80790 /* QueryCommand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = QueryCommand.hpp; sourceTree = "<group>"; };
 		E48E722525432E7100D604EE /* include */ = {isa = PBXFileReference; lastKnownFileType = text; name = include; path = "../../../../projs/seminar/curlpp-0.8.1/include"; sourceTree = "<group>"; };
 		E48E72282543302500D604EE /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
 		E494BAC8254322C300175E38 /* HTTPClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPClient.cpp; sourceTree = "<group>"; };
@@ -108,6 +114,10 @@
 				E43FAF98253B501200C9C0B6 /* Command.hpp */,
 				E43FAF9A253B571700C9C0B6 /* LoginCommand.cpp */,
 				E43FAF9B253B571700C9C0B6 /* LoginCommand.hpp */,
+				E442D09C2544550B00F80790 /* RecordCommand.cpp */,
+				E442D09D2544550B00F80790 /* RecordCommand.hpp */,
+				E442D09F25445C4500F80790 /* QueryCommand.cpp */,
+				E442D0A025445C4500F80790 /* QueryCommand.hpp */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -184,6 +194,8 @@
 				E43FAF8C253B491200C9C0B6 /* main.cpp in Sources */,
 				E442D09B25442E5500F80790 /* SettingsStore.cpp in Sources */,
 				E494BACA254322C300175E38 /* HTTPClient.cpp in Sources */,
+				E442D0A125445C4500F80790 /* QueryCommand.cpp in Sources */,
+				E442D09E2544550B00F80790 /* RecordCommand.cpp in Sources */,
 				E43FAF9C253B571700C9C0B6 /* LoginCommand.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

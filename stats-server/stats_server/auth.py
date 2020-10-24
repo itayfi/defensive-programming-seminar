@@ -5,8 +5,8 @@ import secrets
 import bcrypt
 from flask import request
 
-import models
-from user_exception import UserException
+from stats_server import models
+from stats_server.user_exception import UserException
 
 ACCESS_TOKEN_LIFETIME = dt.timedelta(days=1)
 DEFAULT_SALT = bcrypt.gensalt()
@@ -52,11 +52,11 @@ def with_auth(needs_admin=False):
             if not access_token:
                 raise AuthException("Missing access token")
             with models.get_session() as session:
-                user = session.query(models.User).filter(access_token=access_token).one_or_none()
-            if not user or user.access_token_expires < dt.datetime.utcnow():
-                raise AuthException("Invalid access token")
-            if needs_admin and not user.is_admin:
-                raise AuthException("No permissions")
+                user = session.query(models.User).filter(models.User.access_token == access_token).one_or_none()
+                if user is None or user.access_token_expires < dt.datetime.utcnow():
+                    raise AuthException("Invalid access token")
+                if needs_admin and not user.is_admin:
+                    raise AuthException("No permissions")
 
             return func(user, *args, **kwargs)
         return wrapper

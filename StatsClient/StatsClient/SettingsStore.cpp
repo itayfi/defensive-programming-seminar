@@ -12,7 +12,7 @@
 #include <stdlib.h>
 
 const json DEFAULT_SETTINGS = {
-    {"server", "https://localhost:8002/"}
+    {"server", "https://localhost:8002"}
 };
 
 SettingsStore* SettingsStore::instance = NULL;

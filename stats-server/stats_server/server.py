@@ -1,10 +1,12 @@
 from flask import Flask
 from flask import jsonify
 from flask import request
+import sqlalchemy as sa
 
-import auth
-import models
-from user_exception import UserException
+from stats_server import auth
+from stats_server import models
+from stats_server import request_utils
+from stats_server.user_exception import UserException
 
 
 app = Flask(__name__)
@@ -33,6 +35,7 @@ def index():
         "version": "1.0.0"
     })
 
+
 @app.route("/login", methods=["POST"])
 def login():
     with models.get_session() as session:
@@ -45,8 +48,55 @@ def login():
                            access_token_expires=access_token_expires,
                            success=True)
 
-    return jsonify(message="Wrong username or password",
-                   success=False), 401
+    raise auth.AuthException("Wrong username or password")
+
+
+@app.route("/stats", methods=["POST"])
+@auth.with_auth(needs_admin=True)
+def add_stats(user):
+    with models.get_session() as session:
+        session.add(models.Statistic(
+            tag=request_utils.get_string("tag", required=True),
+            value=request_utils.get_number("value", required=True)
+        ))
+
+    return jsonify(success=True)
+
+
+@app.route("/query", methods=["POST"])
+@auth.with_auth()
+def get_stats(user):
+    AGGREGATION_FUNCTIONS = {
+        "count": sa.func.count().label("count"),
+        "sum": sa.func.sum(models.Statistic.value).label("sum"),
+        "avg": sa.func.avg(models.Statistic.value).label("avg"),
+        "min": sa.func.min(models.Statistic.value).label("min"),
+        "max": sa.func.max(models.Statistic.value).label("max"),
+        "first": sa.func.min(models.Statistic.timestamp).label("first"),
+        "last": sa.func.max(models.Statistic.timestamp).label("last")
+    }
+
+    with models.get_session() as session:
+        try:
+            aggregations = [AGGREGATION_FUNCTIONS[agg] for agg in request_utils.get_list("aggregations", required=True)]
+        except KeyError as err:
+            raise UserException(f"Unknown aggregation '{err.args[0]}'", 400)
+
+        query = session.query(models.Statistic.tag, *aggregations)
+        query = query.group_by(models.Statistic.tag)
+        if "tag" in request.json:
+            query = query.filter(models.Statistic.tag == request_utils.get_string("tag"))
+        if "since" in request.json:
+            query = query.filter(models.Statistic.timestamp > request_utils.get_date("since"))
+        if "until" in request.json:
+            query = query.filter(models.Statistic.timestamp < request_utils.get_date("until"))
+        results = query.all()
+
+    return jsonify(
+        results=[{key: str(getattr(item, key)) for key in item.keys()} for item in results],
+        success=True
+    )
+
 
 if __name__ == "__main__":
     app.run(port=8002, ssl_context="adhoc")
