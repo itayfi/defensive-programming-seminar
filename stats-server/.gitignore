@@ -1,0 +1,4 @@
+env/
+stats_server.egg-info/
+stats_server/__pycache__/
+stats.db

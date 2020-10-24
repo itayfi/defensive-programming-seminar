@@ -26,13 +26,13 @@ const Command* getCommand(std::string name) {
             return cmd;
         }
     }
-    throw UserException("Command not found: " + name, 1);
+    throw UserException("Command not found: " + name, ERR_NO_COMMAND);
 }
 
 int main(int argc, const char * argv[]) {
     if (argc < 2) {
         std::cerr << "No command supplied" << std::endl;
-        return 1;
+        return ERR_NO_COMMAND;
     }
     std::vector<std::string> args(argv + 2, argv + argc);
     std::string cmdName(argv[1]);
@@ -46,7 +46,7 @@ int main(int argc, const char * argv[]) {
         return exp.getReturnValue();
     } catch (std::exception exp) {
         std::cerr << "An unexpected error occured" << std::endl;
-        return 255;
+        return ERR_UNKNOWN;
     }
     return 0;
 }

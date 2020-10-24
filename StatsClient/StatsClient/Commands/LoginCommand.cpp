@@ -8,8 +8,14 @@
 #include <unistd.h>
 #include <iostream>
 
+#include <nlohmann/json.hpp>
+
 #include "LoginCommand.hpp"
+#include "../HTTPClient.hpp"
 #include "../UserException.hpp"
+#include "../SettingsStore.hpp"
+
+using json = nlohmann::json;
 
 const std::string LoginCommand::getName() const {
     return "login";
@@ -17,7 +23,7 @@ const std::string LoginCommand::getName() const {
 
 const void LoginCommand::verify(const std::vector<std::string> args) const {
     if (args.size() > 2) {
-        throw UserException("usage: stats-client login [<user> [<password>] ]", 2);
+        throw UserException("usage: stats-client login [<user> [<password>] ]", ERR_INVALID_ARGS);
     }
 }
 
@@ -38,5 +44,13 @@ const void LoginCommand::run(const std::vector<std::string> args) const {
         password = getpass("Password: ");
     }
     
-    std::cout << "Will send: " << user << ":" << password << std::endl;
+    json request = {
+        {"user", user},
+        {"password", password}
+    };
+    SettingsStore* settings = SettingsStore::getInstance();
+    json response = HTTPClient::post(settings->get("server") + "/login", request);
+    
+    settings->set("access_token", response["access_token"].get<std::string>());
+    std::cout << "Logged in until: " << response["access_token_expires"].get<std::string>() << std::endl;
 }

@@ -13,6 +13,13 @@
 #include <exception>
 #include <string>
 
+#define ERR_NO_COMMAND 1
+#define ERR_INVALID_ARGS 2
+#define ERR_CONNECTION_ERROR 3
+#define ERR_RESPONSE_ERROR 4
+#define ERR_SERVER_ERROR 5
+#define ERR_UNKNOWN 255
+
 class UserException : public std::exception {
 private:
     const std::string m_message;

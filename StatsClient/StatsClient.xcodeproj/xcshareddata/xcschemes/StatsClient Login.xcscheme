@@ -55,6 +55,14 @@
             argument = "login"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "admin"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "password"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
