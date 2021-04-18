@@ -98,5 +98,24 @@ def get_stats(user):
     )
 
 
+@app.route("/users", methods=["POST"])
+@auth.with_auth(needs_admin=True)
+def add_user(user):
+    username = request_utils.get_string("username", required=True)
+    with models.get_session() as session:
+        if session.query(models.User).filter_by(name=username).count() > 0:
+            raise UserException(f"User {username} already exists", 400)
+
+    password = request_utils.get_string("password", required=True)
+    password_hash = bcrypt.hashpw(password, bcrypt.gensalt())
+    with models.get_session() as session:
+        session.add(models.User(
+            name=username,
+            password_hash=password_hash
+        ))
+
+    return jsonify(success=True)
+
+
 if __name__ == "__main__":
     app.run(port=8002, ssl_context="adhoc")

@@ -11,6 +11,8 @@
 #include <fstream>
 #include <stdlib.h>
 
+#include "UserException.hpp"
+
 const json DEFAULT_SETTINGS = {
     {"server", "https://localhost:8002"}
 };
@@ -38,8 +40,20 @@ SettingsStore::SettingsStore() {
     }
 }
 
+bool SettingsStore::has(std::string key) {
+    if (!data.contains(key)) {
+        return false;
+    }
+    return !data[key].is_null();
+}
+
 std::string SettingsStore::get(std::string key) {
-    return data[key].get<std::string>();
+    try {
+        return data[key].get<std::string>();
+    } catch (nlohmann::detail::type_error) {
+        throw UserException(std::string("Could not read settings, malformed value for ") + key,
+                            ERR_INVALID_SETTINGS);
+    }
 }
 
 void SettingsStore::set(std::string key, std::string value) {

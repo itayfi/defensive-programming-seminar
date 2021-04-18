@@ -18,6 +18,8 @@
 #define ERR_CONNECTION_ERROR 3
 #define ERR_RESPONSE_ERROR 4
 #define ERR_SERVER_ERROR 5
+#define ERR_INVALID_SETTINGS 6
+#define ERR_USER_NOT_LOGGED_IN 7
 #define ERR_UNKNOWN 255
 
 class UserException : public std::exception {

@@ -37,6 +37,9 @@ const void RecordCommand::run(const std::vector<std::string> args) const {
         {"value", value}
     };
     SettingsStore* settings = SettingsStore::getInstance();
+    if (!settings->has("access_token")) {
+        throw UserException("You must be logged in in order to run this command", ERR_USER_NOT_LOGGED_IN);
+    }
     std::string accessToken = settings->get("access_token");
     HTTPClient::post(settings->get("server") + "/stats", request, &accessToken);
 }

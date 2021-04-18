@@ -15,15 +15,18 @@
 #include "Commands/LoginCommand.hpp"
 #include "Commands/RecordCommand.hpp"
 #include "Commands/QueryCommand.hpp"
+#include "Commands/AddUserCommand.hpp"
 #include "UserException.hpp"
 
 const LoginCommand LOGIN_COMMAND;
 const RecordCommand RECORD_COMMAND;
 const QueryCommand QUERY_COMMAND;
+const AddUserCommand ADD_USER_COMMAND;
 const std::vector<const Command*> ALL_COMMANDS {
     &LOGIN_COMMAND,
     &RECORD_COMMAND,
-    &QUERY_COMMAND
+    &QUERY_COMMAND,
+    &ADD_USER_COMMAND
 };
 
 const Command* getCommand(std::string name) {

@@ -83,6 +83,9 @@ const void QueryCommand::run(const std::vector<std::string> args) const {
     json request = filters;
     request["aggregations"] = aggs;
     SettingsStore* settings = SettingsStore::getInstance();
+    if (!settings->has("access_token")) {
+        throw UserException("You must be logged in in order to run this command", ERR_USER_NOT_LOGGED_IN);
+    }
     std::string accessToken = settings->get("access_token");
     json results = HTTPClient::post(settings->get("server") + "/query", request, &accessToken);
     

@@ -25,6 +25,7 @@ private:
 public:
     static SettingsStore* getInstance();
     
+    bool has(std::string key);
     std::string get(std::string key);
     void set(std::string key, std::string value);
 };

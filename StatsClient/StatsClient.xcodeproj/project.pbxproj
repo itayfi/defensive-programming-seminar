@@ -15,6 +15,7 @@
 		E442D09B25442E5500F80790 /* SettingsStore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E442D09925442E5500F80790 /* SettingsStore.cpp */; };
 		E442D09E2544550B00F80790 /* RecordCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E442D09C2544550B00F80790 /* RecordCommand.cpp */; };
 		E442D0A125445C4500F80790 /* QueryCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E442D09F25445C4500F80790 /* QueryCommand.cpp */; };
+		E4464DDD254DBBBE00A73039 /* AddUserCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4464DDB254DBBBE00A73039 /* AddUserCommand.cpp */; };
 		E494BACA254322C300175E38 /* HTTPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E494BAC8254322C300175E38 /* HTTPClient.cpp */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,8 @@
 		E442D09D2544550B00F80790 /* RecordCommand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RecordCommand.hpp; sourceTree = "<group>"; };
 		E442D09F25445C4500F80790 /* QueryCommand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QueryCommand.cpp; sourceTree = "<group>"; };
 		E442D0A025445C4500F80790 /* QueryCommand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = QueryCommand.hpp; sourceTree = "<group>"; };
+		E4464DDB254DBBBE00A73039 /* AddUserCommand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AddUserCommand.cpp; sourceTree = "<group>"; };
+		E4464DDC254DBBBE00A73039 /* AddUserCommand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AddUserCommand.hpp; sourceTree = "<group>"; };
 		E48E722525432E7100D604EE /* include */ = {isa = PBXFileReference; lastKnownFileType = text; name = include; path = "../../../../projs/seminar/curlpp-0.8.1/include"; sourceTree = "<group>"; };
 		E48E72282543302500D604EE /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
 		E494BAC8254322C300175E38 /* HTTPClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPClient.cpp; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 				E442D09D2544550B00F80790 /* RecordCommand.hpp */,
 				E442D09F25445C4500F80790 /* QueryCommand.cpp */,
 				E442D0A025445C4500F80790 /* QueryCommand.hpp */,
+				E4464DDB254DBBBE00A73039 /* AddUserCommand.cpp */,
+				E4464DDC254DBBBE00A73039 /* AddUserCommand.hpp */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 			files = (
 				E43FAF95253B4C4B00C9C0B6 /* UserException.cpp in Sources */,
 				E43FAF8C253B491200C9C0B6 /* main.cpp in Sources */,
+				E4464DDD254DBBBE00A73039 /* AddUserCommand.cpp in Sources */,
 				E442D09B25442E5500F80790 /* SettingsStore.cpp in Sources */,
 				E494BACA254322C300175E38 /* HTTPClient.cpp in Sources */,
 				E442D0A125445C4500F80790 /* QueryCommand.cpp in Sources */,
@@ -317,6 +323,9 @@
 		E43FAF90253B491200C9C0B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ADDRESS_SANITIZER_CONTAINER_OVERFLOW = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_INTEGER = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
 				CODE_SIGN_STYLE = Automatic;
 				"HEADER_SEARCH_PATHS[arch=*]" = (
 					/usr/local/include/,
@@ -333,6 +342,9 @@
 		E43FAF91253B491200C9C0B6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ADDRESS_SANITIZER_CONTAINER_OVERFLOW = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_INTEGER = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
 				CODE_SIGN_STYLE = Automatic;
 				"HEADER_SEARCH_PATHS[arch=*]" = (
 					/usr/local/include/,
