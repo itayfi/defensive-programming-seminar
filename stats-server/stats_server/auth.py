@@ -51,7 +51,7 @@ def with_auth(needs_admin=False):
             access_token = get_access_token()
             if not access_token:
                 raise AuthException("Missing access token")
-            with models.get_session() as session:
+            with models.get_session("auth") as session:
                 user = session.query(models.User).filter(models.User.access_token == access_token).one_or_none()
                 if user is None or user.access_token_expires < dt.datetime.utcnow():
                     raise AuthException("Invalid access token")

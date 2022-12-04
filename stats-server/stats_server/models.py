@@ -1,11 +1,12 @@
 from contextlib import contextmanager
 import datetime as dt
 
-import bcrypt
 import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import Column, Boolean, Numeric, Integer, String, DateTime
+
+from stats_server.config import get_user_details
 
 
 Base = declarative_base()
@@ -36,12 +37,11 @@ class Statistic(Base):
         return f"<Statistic #{self.id} {self.tag}@{self.timestamp.isoformat()}={self.value}>"
 
 
-engine = sqlalchemy.create_engine("sqlite:///stats.db")
-Session = sessionmaker(bind=engine)
-
-
 @contextmanager
-def get_session():
+def get_session(role):
+    user_details = get_user_details(role)
+    engine = sqlalchemy.create_engine("postgres://{user}:{password}@localhost/statsdb".format(**user_details))
+    Session = sessionmaker(bind=engine)
     session = Session()
     try:
         yield session
@@ -52,12 +52,3 @@ def get_session():
         session.commit()
     finally:
         session.close()
-
-
-def create_all():
-    Base.metadata.create_all(engine)
-    with get_session() as session:
-        if session.query(User).count() > 0:
-            return
-        session.add(User(name="admin", password_hash=bcrypt.hashpw(b"password", bcrypt.gensalt()), is_admin=True))
-

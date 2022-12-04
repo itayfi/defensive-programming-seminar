@@ -59,7 +59,6 @@
 		E442D0A025445C4500F80790 /* QueryCommand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = QueryCommand.hpp; sourceTree = "<group>"; };
 		E4464DDB254DBBBE00A73039 /* AddUserCommand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AddUserCommand.cpp; sourceTree = "<group>"; };
 		E4464DDC254DBBBE00A73039 /* AddUserCommand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AddUserCommand.hpp; sourceTree = "<group>"; };
-		E48E722525432E7100D604EE /* include */ = {isa = PBXFileReference; lastKnownFileType = text; name = include; path = "../../../../projs/seminar/curlpp-0.8.1/include"; sourceTree = "<group>"; };
 		E48E72282543302500D604EE /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
 		E494BAC8254322C300175E38 /* HTTPClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPClient.cpp; sourceTree = "<group>"; };
 		E494BAC9254322C300175E38 /* HTTPClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HTTPClient.hpp; sourceTree = "<group>"; };
@@ -131,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				E48E72282543302500D604EE /* libcurl.tbd */,
-				E48E722525432E7100D604EE /* include */,
 				E442D097254428CF00F80790 /* libcurlpp.dylib */,
 			);
 			name = Frameworks;
@@ -327,10 +325,7 @@
 				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_INTEGER = YES;
 				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
 				CODE_SIGN_STYLE = Automatic;
-				"HEADER_SEARCH_PATHS[arch=*]" = (
-					/usr/local/include/,
-					"/private/projs/seminar/curlpp-0.8.1/include/",
-				);
+				"HEADER_SEARCH_PATHS[arch=*]" = /usr/local/include/;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -346,10 +341,7 @@
 				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_INTEGER = YES;
 				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
 				CODE_SIGN_STYLE = Automatic;
-				"HEADER_SEARCH_PATHS[arch=*]" = (
-					/usr/local/include/,
-					"/private/projs/seminar/curlpp-0.8.1/include/",
-				);
+				"HEADER_SEARCH_PATHS[arch=*]" = /usr/local/include/;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
